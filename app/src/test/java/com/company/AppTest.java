@@ -3,8 +3,10 @@ package com.company;
 import static org.junit.Assert.assertEquals;
 
 import com.company.App.Summer;
+import com.company.categories.FastTestsCategory;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Unit test for simple App.
@@ -12,6 +14,7 @@ import org.junit.Test;
 public class AppTest 
 {
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenTestData_filterOnBlue_returnsExpectedSum() throws Exception
     {
         //Arrange
@@ -27,6 +30,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenTestData_filterOnNoneExistingColor_returnsZero() throws Exception
     {
         //Arrange
@@ -42,6 +46,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenTestData_filterOnColorWithOnlyOneElement_returnsExpectedResult() throws Exception
     {
         //Arrange
@@ -57,6 +62,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenInvalidTestData_returnsExpectedResult() throws Exception
     {
         //Arrange
@@ -72,6 +78,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenInvalidTestDataWithSpecialLicenceNumber_returnsExpectedResult() throws Exception
     {
         //Arrange
@@ -87,6 +94,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenInvalidTestDataWithColorThatContainsSpaces_returnsExpectedResult() throws Exception
     {
         //Arrange
@@ -102,6 +110,7 @@ public class AppTest
     }
 
     @Test
+    @Category(FastTestsCategory.class)
     public void summerTest_givenTestData_filterWithUpperCaseColor_returnsExpectedResult() throws Exception
     {
         //Arrange
