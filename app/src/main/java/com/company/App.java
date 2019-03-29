@@ -18,11 +18,11 @@ public class App {
             List<String> lines = new ArrayList<>(readLines(reader));
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
-                if (line.substring(line.indexOf(',') + 1).equals(color)) {
-                    String number = line.substring(4, line.indexOf(','));
+                String colorOfVehicle = line.substring(line.indexOf(',') + 1);
+                if (colorOfVehicle.equals(color)) {
+                    String number = line.substring(3, line.indexOf(','));
                     Integer numberInt = Integer.parseInt(number);
                     sum += numberInt;
-
                 }
             }
         }
@@ -33,7 +33,8 @@ public class App {
             int c = reader.read();
             while (c != -1) {
                 if (c == '\n') {
-                    ls.add(l);
+                    l = l.replaceAll("\\r", "");
+                    ls.add(l.toLowerCase());
                     l = "";
                 } else {
                     l += new Character((char) c);

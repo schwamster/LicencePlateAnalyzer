@@ -7,13 +7,19 @@
             "label": "verify",
             "type": "shell",
             "command": "mvn -B verify",
-            "group": "build"
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/app"
+            }
         },
         {
             "label": "test",
             "type": "shell",
             "command": "mvn -B test",
-            "group": "test"
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}/app"
+            }
         }
     ]
 }
