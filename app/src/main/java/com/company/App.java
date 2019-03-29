@@ -17,13 +17,29 @@ public class App {
             FileReader reader = new FileReader(new File(fileName));
             List<String> lines = new ArrayList<>(readLines(reader));
             for (int i = 1; i < lines.size(); i++) {
-                String line = lines.get(i);
-                String colorOfVehicle = line.substring(line.indexOf(',') + 1);
-                if (colorOfVehicle.equals(color)) {
-                    String number = line.substring(3, line.indexOf(','));
-                    Integer numberInt = Integer.parseInt(number);
+                String plate = lines.get(i);
+                String colorOfVehicle = plate.substring(plate.indexOf(',') + 1);
+                if (colorOfVehicle.equalsIgnoreCase(color)) {
+
+                    Integer numberInt = extractNumberOfPlate(plate);
                     sum += numberInt;
                 }
+            }
+        }
+
+        private Integer extractNumberOfPlate(String plate) {
+            String number = plate.substring(3, plate.indexOf(','));
+            return tryParseInt(number);
+        }
+
+        private Integer tryParseInt(String s) {
+            try {
+                return Integer.parseInt(s);
+            } catch (Exception e) {
+                //TODO: clarify if this is the wanted behaviour. It may be better to actually throw an exception here.
+                //A unit test documents the current behaviour
+                System.out.printf("The string '{0}' cannot be converted to an Integer. Returning 0 instead", s);
+                return 0;
             }
         }
 
