@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.*;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -14,22 +16,15 @@ public class LicensePlateDataAnalyzer {
     }
 
     private Stream<VehicleData> readVehicleDataDistinct(String fileName) throws IOException {
-        FileReader reader = new FileReader(new File(fileName));
+
+        Stream<String> stream = Files.lines(Paths.get(fileName));
         Set<String> ls = new HashSet<String>();
-        String l = "";
-        int c = reader.read();
-        while (c != -1) {
-            if (c == '\n') {
-                l = l.replaceAll("\\r", "");
-                ls.add(l.toLowerCase());
-                l = "";
-            } else {
-                l += new Character((char) c);
-            }
-            c = reader.read();
-        }
-        reader.close();
+        stream.forEach(line -> {
+            ls.add(line.toLowerCase());
+        });
+        stream.close();
 
         return ls.stream().map(x -> new VehicleData(x));
     }
+
 }

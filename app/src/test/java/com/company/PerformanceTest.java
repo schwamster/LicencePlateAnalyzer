@@ -30,8 +30,8 @@ public class PerformanceTest
         System.out.println("Execution time in nanoseconds/element: " + timeElapsed / 100000);
         System.out.println("========================================");
         
-        //total runtime on local dev machine was below around 400ms
-        assertTrue(timeElapsed / 1000000 < 500);
+        //total runtime on local dev machine was below around 150 ms after performance update (prev 400ms)
+        assertTrue(timeElapsed / 1000000 < 200);
         assertEquals(1576767, result);
     }
 }
